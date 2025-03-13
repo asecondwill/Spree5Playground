@@ -1,0 +1,14 @@
+<div class="payment-gateway">
+  po2
+  <% param_prefix = "payment_source[#{payment_method.id}]" %>
+
+  <div class="payment-gateway-fields">
+    <div class="mb-4 payment-gateway-field checkout-content-inner-field">
+      <%= text_field_tag "#{param_prefix}[purchase_order_number]", '', id: 'purchase_order_number', class: 'spree-flat-input', placeholder: 'po12345', required: true %>
+    </div>
+
+    <div class="payment-gateway-field checkout-content-inner-field">
+      <%= text_field_tag "#{param_prefix}[organization_name]", '', id: 'organization_name', class: 'spree-flat-input', placeholder: 'name', required: true %>
+    </div>
+  </div>
+</div>

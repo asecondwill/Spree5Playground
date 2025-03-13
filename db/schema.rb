@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_12_171228) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_13_145515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -699,6 +699,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_12_171228) do
     t.string "cvv_response_message"
     t.jsonb "public_metadata"
     t.jsonb "private_metadata"
+    t.string "purchase_order_number"
     t.index ["number"], name: "index_spree_payments_on_number", unique: true
     t.index ["order_id"], name: "index_spree_payments_on_order_id"
     t.index ["payment_method_id"], name: "index_spree_payments_on_payment_method_id"
@@ -1026,6 +1027,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_12_171228) do
     t.datetime "updated_at", null: false
     t.jsonb "public_metadata"
     t.jsonb "private_metadata"
+  end
+
+  create_table "spree_purchase_orders", force: :cascade do |t|
+    t.string "purchase_order_number"
+    t.integer "user_id"
+    t.string "organization_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], name: "index_spree_purchase_orders_on_user_id"
   end
 
   create_table "spree_refund_reasons", force: :cascade do |t|
